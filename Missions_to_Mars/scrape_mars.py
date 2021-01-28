@@ -1,15 +1,13 @@
-# Dependencies
 import pandas as pd
 from splinter import Browser
 from bs4 import BeautifulSoup
 
-# Function to choose the executable path to driver
 def init_browser():
     executable_path = {"executable_path": r"C:\Users/AshniDattani\Ashni_Workspace\web-scraping-challenge\Missions_to_Mars\chromedriver.exe"}
        
     return Browser("chrome", **executable_path, headless=False)
 
-# Scrape function.
+# Scrape function
 def scrape():
 
     """ NASA Mars News """
@@ -33,10 +31,8 @@ def scrape():
 
     news_paragraph = slide_element.find("div", class_="article_teaser_body").get_text()
 
-    # Exit Browser.
     browser.quit()
 
-    # Print Title and Text.
     print(f'Title: {news_title}\nText: {news_paragraph}')
 
     """ JPL Mars Space Images - Featured Image """
@@ -117,7 +113,7 @@ def scrape():
         
         img_url = hemi_soup.find("li").a['href']
         
-        # Append  title and img_url
+        # title and img_url
         hemisphere_image_urls.append({'title': title, 'img_url': img_url})
         
         browser.quit()
@@ -126,20 +122,12 @@ def scrape():
 
     """ Mars Data Dictionary - MongoDB """
 
-    # Create empty dictionary 
+    # Create empty dictionary
     mars_data = {}
-
-    # Append news_title and news_paragraph 
     mars_data['news_title'] = news_title
     mars_data['news_paragraph'] = news_paragraph
-
-    # Append featured_image_url 
     mars_data['featured_image_url'] = featured_image_url
-
-    # Append mars_facts 
     mars_data['mars_facts'] = mars_facts
-
-    # Append hemisphere_image_urls
     mars_data['hemisphere_image_urls'] = hemisphere_image_urls
 
     print("Scrape Complete")
