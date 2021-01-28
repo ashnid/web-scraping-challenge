@@ -5,17 +5,11 @@ from bs4 import BeautifulSoup
 
 # Function to choose the executable path to driver
 def init_browser():
-    executable_path = {"executable_path": r"C:\Users\sumita\Documents\RutgersDS\HW_102420_v1\web-scraping-challenge\Mission-To-Mars\chromedriver.exe"}
+    executable_path = {"executable_path": r"C:\Users/AshniDattani\Ashni_Workspace\web-scraping-challenge\Missions_to_Mars\chromedriver.exe"}
        
     return Browser("chrome", **executable_path, headless=False)
 
-# def init_browser():
-#     executable_path = {"executable_path": "chromedriver.exe"}
-#     return Browser("chrome", **executable_path, headless=False)
-    
-#browser = Browser("chrome", executable_path="chromedriver", headless=True)
-
-# Full Scrape function.
+# Scrape function.
 def scrape():
 
     """ NASA Mars News """
@@ -187,6 +181,6 @@ def scrape():
     # Append hemisphere_image_urls to mars_data.
     mars_data['hemisphere_image_urls'] = hemisphere_image_urls
 
-    print("Scrape Complete!!!")
+    print("Scrape Complete")
 
     return mars_data
